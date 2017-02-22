@@ -62,16 +62,19 @@
     <Compile Include="Scene\Side.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scene\Agent.cs" />
     <Compile Include="Scene\BackdropTexture.cs" />
     <Compile Include="Scene\Character.cs" />
     <Compile Include="Scene\CharacterTexture.cs" />
     <Compile Include="Scene\Conversation.cs" />
+    <Compile Include="Scene\Detective.cs" />
     <Compile Include="Scene\Hacker.cs" />
     <Compile Include="Scene\Scientist.cs" />
     <Compile Include="Scene\Script.cs" />
     <Compile Include="Scene\ScriptLine.cs" />
     <Compile Include="Sound\LoadedSong.cs" />
     <Compile Include="Sound\LoadedSoundEffect.cs" />
+    <Compile Include="Story\BackstoryConversation.cs" />
     <Compile Include="Story\ExtortionConversation.cs" />
     <Compile Include="Views\ConversationView.cs" />
     <Compile Include="UI\ChatBox.cs" />
@@ -88,6 +91,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Characters\detective.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\UI\textbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -112,10 +118,10 @@
     <Content Include="Content\Images\Characters\scientist.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Music\SteampunkFunk.wma">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Arial.spritefont">
@@ -124,6 +130,9 @@
     <None Include="Content\Arial.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Content\Music\SteampunkFunk.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
