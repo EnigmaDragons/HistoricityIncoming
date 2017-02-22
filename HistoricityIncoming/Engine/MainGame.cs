@@ -26,7 +26,7 @@ namespace Engine
             _sprites = new SpriteBatch(GraphicsDevice);
             new GameInstance().SetGame(this);
             new SpritesBatchInstance().SetSpritesBatch(_sprites);
-            //DefaultFont.Load(Content);
+            DefaultFont.Load(Content);
             base.Initialize();
         }
 

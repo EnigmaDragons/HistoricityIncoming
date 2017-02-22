@@ -58,6 +58,8 @@
     <Compile Include="Graphics\ViewBackgroundColor.cs" />
     <Compile Include="Input\IfMouseIsOnScreen.cs" />
     <Compile Include="Math\IsInRangeInclusive.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\Side.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\BackdropTexture.cs" />
@@ -71,9 +73,8 @@
     <Compile Include="Sound\LoadedSong.cs" />
     <Compile Include="Sound\LoadedSoundEffect.cs" />
     <Compile Include="Story\ExtortionConversation.cs" />
-    <Compile Include="UI\TextBox.cs" />
-    <Compile Include="Views\ChatView.cs" />
     <Compile Include="Views\ConversationView.cs" />
+    <Compile Include="UI\ChatBox.cs" />
     <Compile Include="Views\LabSceneView.cs" />
     <Compile Include="Views\MainMenuView.cs" />
     <Compile Include="Views\SatelliteSceneView.cs" />

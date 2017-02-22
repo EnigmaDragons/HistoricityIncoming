@@ -19,6 +19,9 @@ namespace HistoricityIncoming.Scene
 
         public void Advance()
         {
+            if (_scriptIndex == _script.Count - 1)
+                return;
+
             _scriptIndex++;
             SetActiveCharacter(_script[_scriptIndex].CharacterName);
         }

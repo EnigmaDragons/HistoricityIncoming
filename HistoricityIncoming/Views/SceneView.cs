@@ -10,7 +10,7 @@ namespace HistoricityIncoming.Views
     public abstract class SceneView : IGameView
     {
         private readonly string _backdropName;
-        private readonly TextBox textBox = new TextBox();
+        protected readonly ChatBox textBox = new ChatBox();
         private readonly Character _leftCharacter;
         private readonly Character _rightCharacter;
         private Texture2D _backdrop;
