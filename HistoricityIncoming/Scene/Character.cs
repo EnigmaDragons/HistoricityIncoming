@@ -27,7 +27,7 @@ namespace HistoricityIncoming.Scene
         {
             _border = new RectangleTexture(154, 201, Color.Black).Create();
             _portrait = new CharacterTexture(_textureName).Get();
-            _listeningOverlay = new RectangleTexture(150, 197, Color.FromNonPremultiplied(0, 0, 0, 50)).Create();
+            _listeningOverlay = new RectangleTexture(150, 197, Color.FromNonPremultiplied(0, 0, 0, 120)).Create();
         }
 
         public void UnloadContent()
