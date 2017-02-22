@@ -18,7 +18,7 @@ namespace HistoricityIncoming
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame(new ConversationView("laboratory", new ExtortionConversation()), 
+            using (var game = new MainGame(new LabSceneView(), 
                 new ScreenSize(900, 600)))
                 game.Run();
         }
