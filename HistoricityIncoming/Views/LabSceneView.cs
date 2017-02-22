@@ -1,12 +1,10 @@
-﻿using Engine;
-using Graphics;
-using Microsoft.Xna.Framework;
+﻿using HistoricityIncoming.Scene;
 
 namespace HistoricityIncoming.Views
 {
     public class LabSceneView : SceneView
     {
-        public LabSceneView() 
-            : base("laboratory") { }
+        public LabSceneView()
+            : base("laboratory", new Hacker("Ang3l0R0X"), new Scientist("Bormann")) { }
     }
 }

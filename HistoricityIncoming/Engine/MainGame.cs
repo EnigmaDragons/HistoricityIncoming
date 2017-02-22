@@ -47,13 +47,13 @@ namespace Engine
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            _currentView?.Update(gameTime);
+            _currentView?.Update(gameTime.ElapsedGameTime.Milliseconds);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            _sprites.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+            _sprites.Begin();
             _currentView?.Draw();
             _sprites.End();
             base.Draw(gameTime);

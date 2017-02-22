@@ -47,8 +47,6 @@
     <Compile Include="Engine\MainGame.cs" />
     <Compile Include="Engine\ScreenSize.cs" />
     <Compile Include="Engine\SpritesBatchInstance.cs" />
-    <Compile Include="Graphics\Animation.cs" />
-    <Compile Include="Graphics\Animations.cs" />
     <Compile Include="Graphics\DefaultFont.cs" />
     <Compile Include="Graphics\DrawOnScreen.cs" />
     <Compile Include="Graphics\DrawRectOnScreen.cs" />
@@ -63,6 +61,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\BackdropTexture.cs" />
+    <Compile Include="Scene\Character.cs" />
+    <Compile Include="Scene\CharacterTexture.cs" />
+    <Compile Include="Scene\Hacker.cs" />
+    <Compile Include="Scene\Scientist.cs" />
     <Compile Include="Sound\LoadedSong.cs" />
     <Compile Include="Sound\LoadedSoundEffect.cs" />
     <Compile Include="Views\LabSceneView.cs" />
