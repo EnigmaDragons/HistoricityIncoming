@@ -8,7 +8,7 @@ namespace HistoricityIncoming.UI
 {
     public class ChatBox : IGameObject
     {
-        private const int MillisToCharacter = 50;
+        private const int MillisToCharacter = 30;
 
         private Texture2D _textBox;
         private DisplayMessage _currentDisplayMessage;
@@ -18,7 +18,7 @@ namespace HistoricityIncoming.UI
         public void LoadContent()
         {
             _textBox = new LoadedTexture("UI/textbox2").Get();
-            _currentDisplayMessage = new DisplayMessage("", "Start", Side.Left, 100000);
+            _currentDisplayMessage = new DisplayMessage("", " ", Side.Left, 100000);
         }
 
         public void UnloadContent()

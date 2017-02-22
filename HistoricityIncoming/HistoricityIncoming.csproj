@@ -95,6 +95,9 @@
     <Content Include="Content\Images\Characters\detective.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\Characters\Noise.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\UI\textbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
