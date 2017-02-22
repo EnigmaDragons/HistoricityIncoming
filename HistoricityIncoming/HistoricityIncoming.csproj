@@ -43,7 +43,7 @@
     <Compile Include="Engine\IGame.cs" />
     <Compile Include="Engine\IGameObject.cs" />
     <Compile Include="Engine\IGameView.cs" />
-    <Compile Include="Engine\INavigator.cs" />
+    <Compile Include="Engine\INavigation.cs" />
     <Compile Include="Engine\MainGame.cs" />
     <Compile Include="Engine\ScreenSize.cs" />
     <Compile Include="Engine\SpritesBatchInstance.cs" />
@@ -76,7 +76,6 @@
     <Compile Include="Sound\LoadedSoundEffect.cs" />
     <Compile Include="Story\BackstoryConversation.cs" />
     <Compile Include="Story\ExtortionConversation.cs" />
-    <Compile Include="Views\ConversationView.cs" />
     <Compile Include="UI\ChatBox.cs" />
     <Compile Include="Views\CityScapeSceneView.cs" />
     <Compile Include="Views\MainMenuView.cs" />
@@ -90,6 +89,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Backdrop\mainmenu.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\Characters\detective.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -133,7 +135,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

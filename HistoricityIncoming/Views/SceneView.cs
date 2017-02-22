@@ -7,6 +7,8 @@ using HistoricityIncoming.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Sound;
 
 namespace HistoricityIncoming.Views
 {
@@ -19,6 +21,7 @@ namespace HistoricityIncoming.Views
         private readonly Character _rightCharacter;
         private Texture2D _backdrop;
         private bool _enterKeyPressed = false;
+        private Song _soundtrack;
         
         protected SceneView(string backdropName, Conversation converstion, ChatBox chatBox)
         {
@@ -35,6 +38,9 @@ namespace HistoricityIncoming.Views
             _backdrop = new BackdropTexture(_backdropName).Get();
             _leftCharacter.LoadContent();
             _rightCharacter.LoadContent();
+            _soundtrack = new LoadedSong("SteampunkFunk").Get();
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(_soundtrack);
         }
 
         public void UnloadContent()
@@ -69,6 +75,10 @@ namespace HistoricityIncoming.Views
             _leftCharacter.Draw(new Vector2(10, 265));
             _rightCharacter.Draw(new Vector2(740, 265));
             textBox.Draw(new Vector2(0, 450));
+        }
+
+        public void SetNavigaton(INavigation navigation)
+        {
         }
     }
 }

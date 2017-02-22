@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Engine
 {
-    public class MainGame : Game, INavigator
+    public class MainGame : Game, INavigation
     {
         private SpriteBatch _sprites;
         private IGameView _currentView;
@@ -15,8 +15,9 @@ namespace Engine
         {
             _graphicsManager = new GraphicsDeviceManager(this);
             screenSize.Apply(_graphicsManager);
-            _currentView = startingView;
             Content.RootDirectory = "Content";
+            startingView.SetNavigaton(this);
+            _currentView = startingView;
         }
 
         protected override void Initialize()
@@ -59,13 +60,9 @@ namespace Engine
             base.Draw(gameTime);
         }
 
-        public void NavigateTo(string viewName)
+        public void NavigateTo(IGameView view)
         {
-            throw new System.Exception("No known views");
-        }
-
-        private void NavigateTo(IGameView view)
-        {
+            view.SetNavigaton(this);
             view.LoadContent();
             _currentView?.UnloadContent();
             _currentView = view;
