@@ -1,4 +1,4 @@
-﻿namespace HistoricityIncoming.Messages
+﻿namespace HistoricityIncoming.Scene
 {
     public enum Side
     {

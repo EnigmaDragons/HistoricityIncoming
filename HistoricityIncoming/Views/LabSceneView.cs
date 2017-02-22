@@ -1,5 +1,5 @@
-using HistoricityIncoming.Messages;
-﻿using HistoricityIncoming.Scene;
+using HistoricityIncoming.Scene;
+using HistoricityIncoming.Story;
 
 namespace HistoricityIncoming.Views
 {
@@ -7,7 +7,6 @@ namespace HistoricityIncoming.Views
     {
         public LabSceneView() : base("laboratory", new Hacker("Ang3l0R0X"), new Scientist("Bormann"))
         {
-            textBox.AppendMessage(new Message("Bobsdfeswfefef", "Here is an incredibly long message about relatively nothing! but I just thought I should say something regarding it!", Side.Right));
         }
     }
 }

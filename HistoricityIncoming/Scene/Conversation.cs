@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Engine;
+using HistoricityIncoming.UI;
 using Microsoft.Xna.Framework;
 
 namespace HistoricityIncoming.Scene
@@ -8,13 +10,15 @@ namespace HistoricityIncoming.Scene
     {
         public List<Character> Characters { get; }
         private readonly Script _script;
+        private readonly ChatBox _chatBox;
 
         private int _scriptIndex = -1;
 
-        public Conversation(List<Character> characters, Script script)
+        public Conversation(List<Character> characters, Script script, ChatBox chatBox)
         {
             Characters = characters;
             _script = script;
+            _chatBox = chatBox;
         }
 
         public void Advance()
@@ -23,7 +27,9 @@ namespace HistoricityIncoming.Scene
                 return;
 
             _scriptIndex++;
-            SetActiveCharacter(_script[_scriptIndex].CharacterName);
+            var line = _script[_scriptIndex];
+            SetActiveCharacter(line.CharacterName);
+            _chatBox.Show(line, Characters.IndexOf(Characters.First(x => x.Name.Equals(line.CharacterName))) == 0 ? Side.Left : Side.Right);
         }
 
         private void SetActiveCharacter(string characterName)

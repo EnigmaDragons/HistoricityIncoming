@@ -58,8 +58,8 @@
     <Compile Include="Graphics\ViewBackgroundColor.cs" />
     <Compile Include="Input\IfMouseIsOnScreen.cs" />
     <Compile Include="Math\IsInRangeInclusive.cs" />
-    <Compile Include="Messages\Message.cs" />
-    <Compile Include="Messages\Side.cs" />
+    <Compile Include="UI\DisplayMessage.cs" />
+    <Compile Include="Scene\Side.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\BackdropTexture.cs" />

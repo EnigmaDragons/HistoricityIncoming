@@ -1,9 +1,12 @@
-﻿using Engine;
+﻿using System.Linq;
+using Engine;
 using Graphics;
 using HistoricityIncoming.Scene;
+using HistoricityIncoming.Story;
 using HistoricityIncoming.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace HistoricityIncoming.Views
 {
@@ -11,12 +14,15 @@ namespace HistoricityIncoming.Views
     {
         private readonly string _backdropName;
         protected readonly ChatBox textBox = new ChatBox();
+        private readonly Conversation _conversation;
         private readonly Character _leftCharacter;
         private readonly Character _rightCharacter;
         private Texture2D _backdrop;
+        private bool _enterKeyPressed = false;
         
         protected SceneView(string backdropName, Character leftCharacter, Character rightCharacter)
         {
+            _conversation = new ExtortionConversation(textBox);
             _backdropName = backdropName;
             _leftCharacter = leftCharacter;
             _rightCharacter = rightCharacter;
@@ -41,6 +47,16 @@ namespace HistoricityIncoming.Views
         public void Update(long deltaMillis)
         {
             textBox.Update(deltaMillis);
+            var ks = Keyboard.GetState();
+            if (ks.IsKeyDown(Keys.Enter) && !_enterKeyPressed)
+            {
+                if (textBox.CanAdvance())
+                    textBox.Advance();
+                else
+                    _conversation.Advance();
+            }
+            _conversation.Update(deltaMillis);
+            _enterKeyPressed = ks.IsKeyDown(Keys.Enter);
         }
 
         public void Draw()

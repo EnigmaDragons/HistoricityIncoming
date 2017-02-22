@@ -46,11 +46,7 @@ namespace HistoricityIncoming.Views
 
         public void Update(long deltaMillis)
         {
-            var ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.Enter))
-                _conversation.Advance();
-
-            _conversation.Update(deltaMillis);
+            
         }
 
         public void Draw()

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Engine;
+﻿using Engine;
 using Graphics;
-using HistoricityIncoming.Messages;
+using HistoricityIncoming.Scene;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,30 +8,30 @@ namespace HistoricityIncoming.UI
 {
     public class ChatBox : IGameObject
     {
-        private Texture2D textBox;
-        private List<Message> messages = new List<Message>();
-        private Message currentMessage;
-        private int index;
+        private const int MillisToCharacter = 50;
 
-        private string currentContent = "";
-        private long totalMessageTime = 0;
+        private Texture2D _textBox;
+        private DisplayMessage _currentDisplayMessage;
+        private string _currentContent = "";
+        private long _totalMessageTime = 0;
 
         public void LoadContent()
         {
-            textBox = new LoadedTexture("UI/textbox2").Get();
+            _textBox = new LoadedTexture("UI/textbox2").Get();
+            _currentDisplayMessage = new DisplayMessage("", "Start", Side.Left, 100000);
         }
 
         public void UnloadContent()
         {
-            textBox.Dispose();
+            _textBox.Dispose();
         }
 
         public void Update(long deltaMillis)
         {
-            totalMessageTime += deltaMillis;
-            var length = (int)((double)totalMessageTime/(double)100);
-            length = currentMessage.Content.Length - 1 < length ? currentMessage.Content.Length - 1 : length;
-            currentContent = currentMessage.Content.Substring(0, length);
+            _totalMessageTime += deltaMillis;
+            var length = (int)((double)_totalMessageTime/(double)MillisToCharacter);
+            length = _currentDisplayMessage.GetCurrentContent().Length < length ? _currentDisplayMessage.GetCurrentContent().Length : length;
+            _currentContent = _currentDisplayMessage.GetCurrentContent().Substring(0, length);
         }
 
         public void Draw(Vector2 offset)
@@ -42,42 +41,52 @@ namespace HistoricityIncoming.UI
             ShowMessage();
         }
 
-        public void AppendMessage(Message message)
+        public void Show(ScriptLine message, Side side)
         {
-            messages.Add(message);
-            //temp
-            currentMessage = message;
+            _totalMessageTime = 0;
+            _currentDisplayMessage = new DisplayMessage(message.CharacterName, message.Text, side, GetBoxPosition().Width - 100);
+        }
+
+        public bool CanAdvance()
+        {
+            return _currentDisplayMessage.CanAdvance();
+        }
+
+        public void Advance()
+        {
+            _totalMessageTime = 0;
+            _currentDisplayMessage.Advance();
         }
 
         private void ShowBox()
         {
-            new SpritesBatchInstance().Draw(textBox, GetBoxPosition(),
-                messages[index].Side == Side.Left ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
+            new SpritesBatchInstance().Draw(_textBox, GetBoxPosition(),
+                _currentDisplayMessage.Side == Side.Left ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
         }
 
         private void ShowName()
         {
-            new SpritesBatchInstance().DrawText(currentMessage.Name, GetNameLocation(), Color.White);
+            new SpritesBatchInstance().DrawText(_currentDisplayMessage.Name, GetNameLocation(), Color.White);
         }
 
         private void ShowMessage()
         {
-            new SpritesBatchInstance().DrawWrappingText(currentContent, new Vector2(50, GetBoxPosition().Y + 50), Color.White, GetBoxPosition().Width - 100);
+            new SpritesBatchInstance().DrawText(_currentContent, new Vector2(50, GetBoxPosition().Y + 50), Color.White);
         }
 
         private Vector2 GetNameLocation()
         {
-            var nameSizeAdjustment = currentMessage.Side == Side.Left ? -currentMessage.Name.Length*6 : +currentMessage.Name.Length*6;
+            var nameSizeAdjustment = _currentDisplayMessage.Side == Side.Left ? -_currentDisplayMessage.Name.Length*6 : +_currentDisplayMessage.Name.Length*6;
             var offset = 200 + nameSizeAdjustment;
-            return new Vector2(currentMessage.Side == Side.Left ? 0 + offset : GetBoxPosition().Width - offset, GetBoxPosition().Y + 20);
+            return new Vector2(_currentDisplayMessage.Side == Side.Left ? 0 + offset : GetBoxPosition().Width - offset, GetBoxPosition().Y + 20);
         }
 
         private Rectangle GetBoxPosition()
         {
             var graphicsDevice = new GraphicsDeviceInstance();
             var width = graphicsDevice.Get().Viewport.Width;
-            var scale = (double) width/(double) textBox.Width;
-            var height = (int)(textBox.Height * scale);
+            var scale = (double) width/(double) _textBox.Width;
+            var height = (int)(_textBox.Height * scale);
             var x = 0;
             var y = graphicsDevice.Get().Viewport.Height - height;
             return new Rectangle(x, y, width, height);
