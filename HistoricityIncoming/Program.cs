@@ -1,5 +1,6 @@
 ﻿using System;
 using Engine;
+using HistoricityIncoming.Views;
 
 namespace HistoricityIncoming
 {
@@ -15,7 +16,7 @@ namespace HistoricityIncoming
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame(null))
+            using (var game = new MainGame(new ChatView()))
                 game.Run();
         }
     }
