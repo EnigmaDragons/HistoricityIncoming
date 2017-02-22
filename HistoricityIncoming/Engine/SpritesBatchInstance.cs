@@ -28,5 +28,10 @@ namespace Engine
         {
             spritesInstance.DrawString(DefaultFont.Font, text, pixelPosition, color);
         }
+
+        public void Draw(Texture2D texture, Rectangle rectPosition, SpriteEffects effect)
+        {
+            spritesInstance.Draw(texture, rectPosition, null, Color.White, 0, new Vector2(rectPosition.X, rectPosition.Y), effect, 0);
+        }
     }
 }

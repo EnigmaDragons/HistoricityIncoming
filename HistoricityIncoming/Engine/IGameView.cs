@@ -5,7 +5,7 @@ namespace Engine
     {
         void LoadContent();
         void UnloadContent();
-        void Update(float deltaTime);
+        void Update(long deltaMillis);
         void Draw();
     }
 }
