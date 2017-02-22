@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using Engine;
 using Graphics;
 using HistoricityIncoming.Messages;
@@ -32,7 +30,9 @@ namespace HistoricityIncoming.UI
         public void Update(long deltaMillis)
         {
             totalMessageTime += deltaMillis;
-            //currentContent = currentMessage.Content.Substring(0, Math.Min(currentMessage.Content.Length - 1, totalMessageTime / 100));
+            var length = (int)((double)totalMessageTime/(double)100);
+            length = currentMessage.Content.Length - 1 < length ? currentMessage.Content.Length - 1 : length;
+            currentContent = currentMessage.Content.Substring(0, length);
         }
 
         public void Draw(Vector2 offset)
