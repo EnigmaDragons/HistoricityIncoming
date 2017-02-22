@@ -41,6 +41,7 @@ namespace HistoricityIncoming.Views
             _soundtrack = new LoadedSong("SteampunkFunk").Get();
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(_soundtrack);
+            _conversation.Advance();
         }
 
         public void UnloadContent()

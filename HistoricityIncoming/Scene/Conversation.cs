@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Engine;
 using HistoricityIncoming.UI;
@@ -24,7 +25,7 @@ namespace HistoricityIncoming.Scene
         public void Advance()
         {
             if (_scriptIndex == _script.Count - 1)
-                return;
+                Environment.Exit(0);
 
             _scriptIndex++;
             var line = _script[_scriptIndex];
