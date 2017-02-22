@@ -16,7 +16,7 @@ namespace HistoricityIncoming
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame(new ChatView()))
+            using (var game = new MainGame(new LabSceneView(), new ScreenSize(900, 600)))
                 game.Run();
         }
     }
