@@ -9,6 +9,8 @@ using HistoricityIncoming.Scene;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Sound;
 
 namespace HistoricityIncoming.Views
 {
@@ -19,6 +21,7 @@ namespace HistoricityIncoming.Views
         private readonly Character _leftCharacter;
         private readonly Character _rightCharacter;
         private Texture2D _backdrop;
+        private Song _music;
 
         public ConversationView(string backdropName, Conversation conversation)
         {
@@ -34,6 +37,9 @@ namespace HistoricityIncoming.Views
             _conversation.LoadContent();
             _leftCharacter.LoadContent();
             _rightCharacter.LoadContent();
+            _music = new LoadedSong("SteampunkFunk").Get();
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(_music);
         }
 
         public void UnloadContent()
