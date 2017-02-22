@@ -1,5 +1,7 @@
 ﻿using System;
 using Engine;
+using HistoricityIncoming.Scene;
+using HistoricityIncoming.Story;
 using HistoricityIncoming.Views;
 
 namespace HistoricityIncoming
@@ -16,7 +18,8 @@ namespace HistoricityIncoming
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame(new LabSceneView(), new ScreenSize(900, 600)))
+            using (var game = new MainGame(new ConversationView("laboratory", new ExtortionConversation()), 
+                new ScreenSize(900, 600)))
                 game.Run();
         }
     }
