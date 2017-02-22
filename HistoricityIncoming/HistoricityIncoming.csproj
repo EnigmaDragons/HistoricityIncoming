@@ -78,9 +78,8 @@
     <Compile Include="Story\ExtortionConversation.cs" />
     <Compile Include="Views\ConversationView.cs" />
     <Compile Include="UI\ChatBox.cs" />
-    <Compile Include="Views\LabSceneView.cs" />
+    <Compile Include="Views\CityScapeSceneView.cs" />
     <Compile Include="Views\MainMenuView.cs" />
-    <Compile Include="Views\SatelliteSceneView.cs" />
     <Compile Include="Views\SceneView.cs" />
   </ItemGroup>
   <ItemGroup>

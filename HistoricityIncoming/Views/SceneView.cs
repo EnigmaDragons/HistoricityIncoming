@@ -13,19 +13,20 @@ namespace HistoricityIncoming.Views
     public abstract class SceneView : IGameView
     {
         private readonly string _backdropName;
-        protected readonly ChatBox textBox = new ChatBox();
+        protected readonly ChatBox textBox;
         private readonly Conversation _conversation;
         private readonly Character _leftCharacter;
         private readonly Character _rightCharacter;
         private Texture2D _backdrop;
         private bool _enterKeyPressed = false;
         
-        protected SceneView(string backdropName, Character leftCharacter, Character rightCharacter)
+        protected SceneView(string backdropName, Conversation converstion, ChatBox chatBox)
         {
-            _conversation = new ExtortionConversation(textBox);
+            textBox = chatBox;
+            _conversation = converstion;
             _backdropName = backdropName;
-            _leftCharacter = leftCharacter;
-            _rightCharacter = rightCharacter;
+            _leftCharacter = converstion.Characters[0];
+            _rightCharacter = converstion.Characters[1];
         }
 
         public void LoadContent()
@@ -50,7 +51,9 @@ namespace HistoricityIncoming.Views
             var ks = Keyboard.GetState();
             if (ks.IsKeyDown(Keys.Enter) && !_enterKeyPressed)
             {
-                if (textBox.CanAdvance())
+                if (textBox.IsPrinting())
+                    textBox.FinishPrinting();
+                else if (textBox.CanAdvance())
                     textBox.Advance();
                 else
                     _conversation.Advance();

@@ -58,6 +58,16 @@ namespace HistoricityIncoming.UI
             _currentDisplayMessage.Advance();
         }
 
+        public bool IsPrinting()
+        {
+            return _currentDisplayMessage.GetCurrentContent() != _currentContent;
+        }
+
+        public void FinishPrinting()
+        {
+            _totalMessageTime = 99999999;
+        }
+
         private void ShowBox()
         {
             new SpritesBatchInstance().Draw(_textBox, GetBoxPosition(),

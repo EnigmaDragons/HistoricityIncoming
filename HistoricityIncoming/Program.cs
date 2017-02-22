@@ -18,7 +18,7 @@ namespace HistoricityIncoming
         [STAThread]
         static void Main()
         {
-            using (var game = new MainGame(new ConversationView("cityscape", new BackstoryConversation()), 
+            using (var game = new MainGame(new CityScapeSceneView(), 
                 new ScreenSize(900, 600)))
                 game.Run();
         }

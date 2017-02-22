@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HistoricityIncoming.Scene;
+using HistoricityIncoming.UI;
 
 namespace HistoricityIncoming.Story
 {
@@ -8,7 +9,7 @@ namespace HistoricityIncoming.Story
         private const string HACKER_NAME = "Ji Reilly";
         private const string DETECTIVE_NAME = "Brady";
 
-        public BackstoryConversation() 
+        public BackstoryConversation(ChatBox chatBox) 
             : base(new List<Character> { new Hacker(HACKER_NAME), new Detective(DETECTIVE_NAME) }, 
                   new Script
                   {
@@ -49,6 +50,6 @@ namespace HistoricityIncoming.Story
                       new ScriptLine(HACKER_NAME, "The other thing, Detective."),
                       new ScriptLine(HACKER_NAME, "My name is Noise."),
                       new ScriptLine(HACKER_NAME, "So, I guess I'll be going now?"),
-                  }) { }
+                  }, chatBox) { }
     }
 }
