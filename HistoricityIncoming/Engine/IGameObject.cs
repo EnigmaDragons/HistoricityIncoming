@@ -6,7 +6,7 @@ namespace Engine
     {
         void LoadContent();
         void UnloadContent();
-        void Update(GameTime deltaTime);
-        void Draw();
+        void Update(long deltaMillis);
+        void Draw(Vector2 offset);
     }
 }

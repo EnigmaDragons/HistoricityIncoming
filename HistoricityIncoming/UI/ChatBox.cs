@@ -15,7 +15,9 @@ namespace HistoricityIncoming.UI
         private List<Message> messages = new List<Message>();
         private Message currentMessage;
         private int index;
-        private string currentShownMessage = "";
+
+        private string currentContent = "";
+        private long totalMessageTime = 0;
 
         public void LoadContent()
         {
@@ -27,12 +29,13 @@ namespace HistoricityIncoming.UI
             textBox.Dispose();
         }
 
-        public void Update(GameTime deltaTime)
+        public void Update(long deltaMillis)
         {
-
+            totalMessageTime += deltaMillis;
+            //currentContent = currentMessage.Content.Substring(0, Math.Min(currentMessage.Content.Length - 1, totalMessageTime / 100));
         }
 
-        public void Draw()
+        public void Draw(Vector2 offset)
         {
             ShowBox();
             ShowName();
@@ -59,7 +62,7 @@ namespace HistoricityIncoming.UI
 
         private void ShowMessage()
         {
-            new SpritesBatchInstance().DrawWrappingText(currentShownMessage, new Vector2(50, GetBoxPosition().Y + 50), Color.White, GetBoxPosition().Width - 100);
+            new SpritesBatchInstance().DrawWrappingText(currentContent, new Vector2(50, GetBoxPosition().Y + 50), Color.White, GetBoxPosition().Width - 100);
         }
 
         private Vector2 GetNameLocation()

@@ -1,7 +1,11 @@
 ﻿
 namespace Engine
 {
-    public interface IGameView : IGameObject
+    public interface IGameView
     {
+        void LoadContent();
+        void UnloadContent();
+        void Update(long deltaMillis);
+        void Draw();
     }
 }
