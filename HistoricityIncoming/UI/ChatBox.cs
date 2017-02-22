@@ -81,14 +81,14 @@ namespace HistoricityIncoming.UI
 
         private void ShowMessage()
         {
-            new SpritesBatchInstance().DrawText(_currentContent, new Vector2(50, GetBoxPosition().Y + 50), Color.White);
+            new SpritesBatchInstance().DrawText(_currentContent, new Vector2(50, GetBoxPosition().Y + 60), Color.White);
         }
 
         private Vector2 GetNameLocation()
         {
             var nameSizeAdjustment = _currentDisplayMessage.Side == Side.Left ? -_currentDisplayMessage.Name.Length*6 : +_currentDisplayMessage.Name.Length*6;
             var offset = 200 + nameSizeAdjustment;
-            return new Vector2(_currentDisplayMessage.Side == Side.Left ? 0 + offset : GetBoxPosition().Width - offset, GetBoxPosition().Y + 20);
+            return new Vector2(_currentDisplayMessage.Side == Side.Left ? 0 + offset : GetBoxPosition().Width - offset, GetBoxPosition().Y + 17);
         }
 
         private Rectangle GetBoxPosition()

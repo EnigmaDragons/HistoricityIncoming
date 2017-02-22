@@ -42,7 +42,7 @@ namespace HistoricityIncoming.UI
             var str = "";
             for (var i = 0; i < wrappedContent.Split('\n').Length; i++)
             {
-                if (i % 3 == 0 && str != "")
+                if (i % 2 == 0 && str != "")
                 {
                     _content.Add(str);
                     str = "";
