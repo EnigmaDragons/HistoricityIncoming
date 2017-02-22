@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using NewYorkCity1337.Graphics;
 
 namespace Engine
 {
@@ -10,13 +9,12 @@ namespace Engine
     {
         private SpriteBatch _sprites;
         private IGameView _currentView;
-        private GraphicsDeviceManager _graphicsManager;
+        private readonly GraphicsDeviceManager _graphicsManager;
 
-        public MainGame(IGameView startingView)
+        public MainGame(IGameView startingView, ScreenSize screenSize)
         {
             _graphicsManager = new GraphicsDeviceManager(this);
-            _graphicsManager.PreferredBackBufferWidth = new TileSize().Get() * 26;
-            _graphicsManager.PreferredBackBufferHeight = new TileSize().Get() * 14; 
+            screenSize.Apply(_graphicsManager);
             _currentView = startingView;
             Content.RootDirectory = "Content";
         }
@@ -28,7 +26,7 @@ namespace Engine
             _sprites = new SpriteBatch(GraphicsDevice);
             new GameInstance().SetGame(this);
             new SpritesBatchInstance().SetSpritesBatch(_sprites);
-            DefaultFont.Load(Content);
+            //DefaultFont.Load(Content);
             base.Initialize();
         }
 
